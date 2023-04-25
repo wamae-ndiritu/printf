@@ -110,6 +110,9 @@ int _printf(const char *format, ...)
 				case 'i':
 					char_printed_count = handle_integers(char_printed_count, args);
 					break;
+				case 'b':
+					char_printed_count = handle_binary_conversion(char_printed_count, args);
+					break;
 				case 'c':
 					char_printed_count = handle_strings(char_printed_count, args, 'c');
 					break;

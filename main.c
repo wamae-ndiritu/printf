@@ -29,5 +29,7 @@ int main(void)
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
+	len = _printf("%b\n", 98);
+	printf("Length of binary:[%d]\n", len);
 	return (0);
 }
