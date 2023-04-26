@@ -18,5 +18,9 @@ int handle_character(int char_printed_count, va_list args);
 int handle_strings(int char_printed_count, va_list args);
 int handle_integers(int char_printed_count, va_list args);
 int handle_binary(int count, va_list args);
+int handle_unsigned_decimal(int char_printed_ount, va_list args);
+int handle_hex_lower(int char_printed_count, va_list args);
+int handle_hex_upper(int char_printed_count, va_list args);
+int handle_octal(int char_printed_count, va_list args);
 int (*get_handler(char format))(int, va_list);
 #endif

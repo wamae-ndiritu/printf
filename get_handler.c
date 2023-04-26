@@ -18,6 +18,10 @@ int (*get_handler(char format))(int, va_list)
 		{'c', handle_character},
 		{'s', handle_strings},
 		{'b', handle_binary},
+		{'u', handle_unsigned_decimal},
+		{'x', handle_hex_lower},
+		{'X', handle_hex_upper},
+		{'o', handle_octal},
 		{'\0', NULL}
 	};
 	int i = 0;
