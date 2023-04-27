@@ -22,6 +22,7 @@ int (*get_handler(char format))(int, va_list)
 		{'x', handle_hex_lower},
 		{'X', handle_hex_upper},
 		{'o', handle_octal},
+		{'S', handle_String},
 		{'\0', NULL}
 	};
 	int i = 0;

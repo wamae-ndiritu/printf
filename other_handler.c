@@ -53,3 +53,62 @@ int handle_octal(int char_printed_count, va_list args)
 	char_printed_count += count;
 	return (char_printed_count);
 }
+
+/**
+ * get_ascii - gets the ascii value of a character
+ * @ch: the character whose ascii value is being found
+ *
+ * Return: returns the ascii value of ch
+ */
+
+int get_ascii(char ch)
+{
+	return (ch);
+}
+
+/**
+ * handle_String - formats a custom conversion in printf
+ * @char_printed_count: number of the characters printed to the stdout
+ * @args: list of arguments to be formatted
+ *
+ * Return: returns char_printed-count
+ */
+
+int handle_String(int char_printed_count, va_list args)
+{
+	char *str, *buffer;
+	int ascii_val, result;
+
+	buffer = (char *)malloc(sizeof(char) * 2);
+	if (buffer == NULL)
+	{
+		free(buffer);
+		return (char_printed_count);
+	}
+	str = va_arg(args, char *);
+	while (*str != '\0')
+	{
+		ascii_val = get_ascii(*str);
+		if ((ascii_val > 0 && ascii_val < 32) || ascii_val >= 127)
+		{
+			write(1, "\\x", 3);
+			char_printed_count += 2;
+			result = snprintf(buffer, 2, "%02X", ascii_val);
+			if (result < 0)
+			{
+				free(buffer);
+				return (char_printed_count);
+			}
+			write(1, buffer, result);
+			char_printed_count += result;
+		}
+		else
+		{
+			write(1, str, 1);
+			char_printed_count++;
+		}
+		str++;
+	}
+	free(buffer);
+	return (char_printed_count);
+}
