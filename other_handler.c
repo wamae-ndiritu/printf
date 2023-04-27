@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <string.h>
 
 /**
  * to_octal_helper - helps in formatting to base 8
@@ -111,4 +112,28 @@ int handle_String(int char_printed_count, va_list args)
 	}
 	free(buffer);
 	return (char_printed_count);
+}
+
+/**
+ * handle_address - formats address of a pointer
+ * @char_printed_count: number of character printed to the output
+ * @args: list of argumnets to be fomatted
+ *
+ * Return: return char_printed_count
+ */
+
+int handle_address(int char_printed_count, va_list args)
+{
+	char buffer[32], *str;
+	int result, buf_len;
+
+	str = va_arg(args, char *);
+	result = snprintf(buffer, 32, "%p", str);
+	if (result < 0)
+		return (char_printed_count);
+	buf_len = strlen(buffer);
+	write(1, buffer, buf_len);
+	char_printed_count += buf_len;
+	return (char_printed_count);
+
 }
