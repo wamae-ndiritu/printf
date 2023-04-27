@@ -92,7 +92,7 @@ int handle_String(int char_printed_count, va_list args)
 		if ((ascii_val > 0 && ascii_val < 32) || ascii_val >= 127)
 		{
 			write(1, "\\x", 3);
-			char_printed_count += 2;
+			char_printed_count += 3;
 			result = snprintf(buffer, 2, "%02X", ascii_val);
 			if (result < 0)
 			{
